@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('coin','CoinController@default');
+Route::get('chart','CoinController@chart');

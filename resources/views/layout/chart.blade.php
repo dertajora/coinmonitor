@@ -5,7 +5,7 @@
     <title>Coin Monitoring</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    @yield('meta')
+    <meta http-equiv="refresh" content="10"/>
     <!-- <link rel="stylesheet" href="css/bootstrap.css" media="screen"> -->
     <link rel="stylesheet" href="css/bs4-one-ui-kit.css">
     <style type="text/css">
@@ -64,26 +64,83 @@
         </button>
         <div class="collapse navbar-toggleable-xs" id="navbar-header">
           <a class="navbar-brand" href="#top">Home</a>
-          <ul class="nav navbar-nav pull-xs-right">
+          {{-- <ul class="nav navbar-nav pull-xs-right">
             <li class="nav-item active">
               <li class="nav-item">
-                <a class="nav-link" href="{{url('/coin')}}">Price</a>
+                <a class="nav-link" href="">Bitcoin.co.id</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{url('/chart')}}">Chart</a>
+                <a class="nav-link" href="">Coinmarketcap</a>
               </li>
               
               
             </li>
-          </ul>
+          </ul> --}}
         </div>
       </div>
     </nav>
-    <a href="#" class="logo">@yield('header')</a>
+    <a href="#" class="logo">Chart Monitoring</a>
   </header>
   
-    @yield('content')
+  <div class="container">
+      <h3 id="h3-navbars" class="h3-marks">Bitcoin Indonesia</h3>
+  </div>
+  <!-- #########################
+       CARDS -->
+  <div class="container">
+    
 
+    <div class="card-columns one-ui-kit-example-container">
+        
+        @foreach($data['bitcoin'] as $row)
+        <div class="card card-success card-inverse text-xs-center">
+          <div class="card-block">
+            <blockquote class="card-blockquote">
+              <h2 class="card-title">{{$row['name']}}</h2>
+              <p>{{number_format($row['price_now'],2,",",".")}} </p>
+              <footer> <cite title="Source Title">{{$row['percentage']}}</cite></footer>
+            </blockquote>
+          </div>
+        </div>
+        @endforeach
+        
+    </div><!-- /card-columns -->
+  </div> <!-- /container for CARDS -->
+  
+  <div class="container">
+      <h3 id="h3-navbars" class="h3-marks">Coinmarketcap</h3>
+  </div>
+  <!-- #########################
+       CARDS -->
+  <div class="container">
+    
+
+    <div class="card-columns one-ui-kit-example-container">
+        
+        @foreach($data['coinmarketcap'] as $row)
+        <div class="card card-success card-inverse text-xs-center">
+          <div class="card-block">
+            <blockquote class="card-blockquote">
+              <h2 class="card-title">{{$row['name']}}</h2>
+              <p>{{number_format($row['price_idr'],2,",",".")}} / ( {{round($row['price_usd'],2)}} USD )</p>
+              <footer> <cite title="Source Title">{{$row['percent_change_1h']}}</cite></footer>
+            </blockquote>
+          </div>
+        </div>
+        @endforeach
+        
+    </div><!-- /card-columns -->
+  </div> <!-- /container for CARDS -->
+  <div class="container">
+    <div class="card-columns one-ui-kit-example-container">
+      <center><iframe src="https://vip.bitcoin.co.id/chart/xrpidr" width="1000px" height="400px"></iframe></center>
+    </div>
+  </div>
+  <div class="container">
+      
+  </div> <!-- /container for BREADCRUMBS & PAGINATION -->
+
+  
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="js/bootstrap.js"></script>

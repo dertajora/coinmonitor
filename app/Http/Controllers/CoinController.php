@@ -73,7 +73,7 @@ class CoinController extends Controller
         $data['bitcoin'] = $data_bitcoin ;
         $data['coinmarketcap'] = $data_coinmarketcap ;
         
-        return view('layout.index')->with('data',$data);
+        return view('content.coin')->with('data',$data);
     }
 
     function querySort ($x, $y) {
@@ -82,11 +82,16 @@ class CoinController extends Controller
 
     
 
-    public function coinmarketcap() {
-        $array_coin = ["stellar", "ripple", "bitcoin", "waves", "ethereum", "nxt"];
-        for ($i=0; $i < count($array_coin); $i++) { 
-            $data_coinmarketcap[$i] = $this->GetDataFromCoinmarketcap($array_coin[$i]);
-        }
+    public function chart() {
+
+        $coin_name = array("stridr" => "Stellar", 
+                           "xrpidr" => "Ripple", 
+                           "wavesidr" => "Waves", 
+                           "btcidr" => "Bitcoin", 
+                           "ethidr" => "Ethereum",
+                           "nxtidr" => "Nxt" );
+
+        return view('content.chart')->with('data',$coin_name);
     }
 
     /**
