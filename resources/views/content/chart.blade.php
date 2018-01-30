@@ -18,15 +18,4 @@
   	</div>
   	@endforeach
 
-  	<div class="container">
-      	<h3 id="h3-navbars" class="h3-marks">Stellar</h3>
-  	</div>
-
-  	<div class="container">
-  	  <center>
-  	  <div class="card-columns one-ui-kit-example-container">
-  	      <iframe src="https://vip.bitcoin.co.id/chart/stridr" width="1048px" height="400px"></iframe>
-  	  </div>
-  	  </center>
-  	</div>
 @endsection
